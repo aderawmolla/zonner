@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:game_app/screens/forgot_password.dart';
+import 'package:game_app/screens/game_bord.dart';
 import 'package:game_app/screens/login_or_signup.dart';
+import 'package:game_app/screens/login_screen.dart';
+import 'package:game_app/screens/otp_screen.dart';
+import 'package:game_app/screens/signup_screen.dart';
 import 'package:game_app/styles/app_styles.dart';
 
 void main() {
@@ -12,6 +17,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        '/signup': (context) => const SignUP(),
+        '/login': (context) => const logInPage(),
+        '/forgot': (context) => const PasswordReset(),
+        '/otp': (context) => const OTPScreen(),
+        '/game_bord': (context) => const GameBoard()
+      },
       title: 'Game App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

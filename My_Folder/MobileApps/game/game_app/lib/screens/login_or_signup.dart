@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:game_app/styles/app_styles.dart';
+import 'package:game_app/widgets/button.dart';
 
 class SignupOrLogin extends StatelessWidget {
   const SignupOrLogin({super.key});
@@ -12,35 +13,10 @@ class SignupOrLogin extends StatelessWidget {
           SizedBox(
               width: MediaQuery.of(context).size.width,
               child: Image.asset('assets/logos/k_logo.jpg')),
-          TextButton(
-            onPressed: () {},
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(
-                  AppColors.white), // Background color
-              side: MaterialStateProperty.all<BorderSide>(
-                const BorderSide(
-                  width: 2.0, // Border width
-                ),
-              ),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0), // Border radius
-                ),
-              ),
-            ),
-            child: Container(
-              padding: const EdgeInsets.all(6),
-              width: MediaQuery.of(context).size.width * 0.6,
-              child: const Text(
-                textAlign: TextAlign.center,
-                "Create Account",
-                style: TextStyle(
-                  color: Colors.black, // Text color
-                  fontSize: 16.0,
-                ),
-              ),
-            ),
-          ),
+          Button(
+              hint: "Create Account",
+              onPressed: () => Navigator.pushNamed(context, '/signup'),
+              isCreate: true),
           const SizedBox(
             height: 10,
           ),
@@ -49,9 +25,12 @@ class SignupOrLogin extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const Text(
-            'Login',
-            style: TextStyle(fontSize: 18.0, color: AppColors.blue),
+          InkWell(
+            onTap: () => Navigator.pushNamed(context, '/login'),
+            child: const Text(
+              'Login',
+              style: TextStyle(fontSize: 18.0, color: AppColors.blue),
+            ),
           )
         ],
       ),

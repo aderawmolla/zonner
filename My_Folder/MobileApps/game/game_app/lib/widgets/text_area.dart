@@ -33,8 +33,16 @@ class _TextareaState extends State<Textarea> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 6),
+      decoration: BoxDecoration(
+        borderRadius:
+            BorderRadius.circular(15), // Adjust the border radius as needed
+        border: Border.all(
+          color: widget.isValid ? Colors.grey : Colors.red,
+          style: BorderStyle.solid,
+        ),
+      ),
       child: TextFormField(
         obscureText: widget.isPassword && widget.isObscure,
         decoration: InputDecoration(
@@ -48,25 +56,14 @@ class _TextareaState extends State<Textarea> {
                   },
                 )
               : const Icon(null),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: widget.isValid ? Colors.grey : Colors.red,
-              style: BorderStyle.solid,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: widget.isValid ? Colors.grey : Colors.red,
-              style: BorderStyle.solid,
-            ),
-          ),
+          enabledBorder: InputBorder.none, // Remove the default input border
+          focusedBorder: InputBorder.none, // Remove the default input border
           prefixIcon: Icon(widget.icon),
           hintText: widget.hint,
         ),
         controller: widget.controller,
         onChanged: (value) {
-          print("the value is ${value}");
-          // widget.onChanged(value);
+          print("the value is $value");
         },
       ),
     );
